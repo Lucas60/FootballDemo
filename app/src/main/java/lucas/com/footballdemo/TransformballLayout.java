@@ -150,6 +150,8 @@ public class TransformballLayout extends RelativeLayout {
 
     public void setPlayerPic(ShootEntity shootEntity) {
 
+
+        //画球员的信息
         if(shootEntity.getLineEventID()!=0){
             for (int i = 0; i < eventList.size(); i++) {
                 int eventID = eventList.get(i).getEventID();
@@ -166,7 +168,7 @@ public class TransformballLayout extends RelativeLayout {
                     place.setText(activitys.getResources().getString(R.string.part)+textPlace);
                     distance.setText(activitys.getResources().getString(R.string.distance)+textDistance);
                     type.setText(activitys.getResources().getString(R.string.type)+textType);
-                    if(eventList.get(i).getPlayID().equals("2")){
+                    if(eventList.get(i).getPlayID().equals("1")){
                         footgoal.setVisibility(View.VISIBLE);
                         shoot_message.setVisibility(View.GONE);
                         footgoal.goal(eventList.get(i), activitys);
@@ -177,6 +179,7 @@ public class TransformballLayout extends RelativeLayout {
                 }
             }
 
+            //画球员
             ImageView iv = (ImageView)getChildAt(x);
             TextView tv = (TextView)getChildAt(x+eventList.size());
             TextView tvName = (TextView)getChildAt(x+eventList.size()+eventList.size());

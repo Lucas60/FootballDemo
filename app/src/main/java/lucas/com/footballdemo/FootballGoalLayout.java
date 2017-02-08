@@ -31,6 +31,7 @@ public class FootballGoalLayout extends RelativeLayout {
     private double proportionY;
     private int stateY;
     private ShootEntity entity;
+    private TranslateAnimation animationBall;
 
 
     public FootballGoalLayout(Context context) {
@@ -87,6 +88,7 @@ public class FootballGoalLayout extends RelativeLayout {
     }
     
     public void goal(ShootEntity entity,Activity activity){
+        removeAllViews();
         this.activity = activity;
         this.entity = entity;
         ViewGroup.LayoutParams params = getLayoutParams();
@@ -136,7 +138,7 @@ public class FootballGoalLayout extends RelativeLayout {
         ivBall.layout(leftB, topB, rightB, bottomB);
         finalX = (int)MyBigDecimal.div(frameXPos,xy)+stateX-ballWidth/2;
         finalY = (int)MyBigDecimal.div(frameYPos,xy)+stateY-ballWidth/2;
-        Animation animationBall = new TranslateAnimation( 0,-(leftB-finalX),0,-(topB-finalY));
+        animationBall = new TranslateAnimation( 0,-(leftB-finalX),0,-(topB-finalY));
         animationBall.setDuration(1000);
         animationBall.setFillAfter(true);
         

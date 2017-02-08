@@ -64,37 +64,87 @@ public class MainActivity extends AppCompatActivity {
 
     private void getData() {
 
+        //测试数据
+
         eventList = new ArrayList<ShootEntity>();
         pointEvent = new ArrayList<ShootEntity>();
-        for (int i = 0; i < 2; i++) {
-            ShootEntity entity = new ShootEntity();
-            entity.setEventID(i+1);
-            entity.setPlayID(""+i);
-            entity.setEventName("事件"+i);
-            entity.setTeamID("2");
-            entity.setPlayerName1("名称"+i);
-            entity.setNumberBack1(i+"");
-            entity.setBodyPartyName("部位"+i);
-            entity.setDistanceName("距离"+i);
-            entity.setBallTypeName("种类"+i);
-            entity.setIsOK(""+1);
-            entity.setBallXPos(400+100*i);
-            entity.setBallYPos(200+30*i);
-            entity.setFrameXPos(400+100*i);
-            entity.setFrameYPos(200+30*i);
-            entity.setGkXPos(400+100*i);
-            entity.setGkYPos(200+30*i);
-            eventList.add(entity);
-        }
+        ShootEntity entity = new ShootEntity();
+        entity.setEventID(1);
+        entity.setPlayID("0");
+        entity.setEventName("传球");
+        entity.setTeamID("1");
+        entity.setPlayerName1("张三");
+        entity.setNumberBack1("5");
+        entity.setBodyPartyName("脚背");
+        entity.setDistanceName("50米");
+        entity.setBallTypeName("长传");
+        entity.setIsOK("1");
+        entity.setBallXPos(400);
+        entity.setBallYPos(200);
+        entity.setFrameXPos(400);
+        entity.setFrameYPos(200);
+        entity.setGkXPos(400);
+        entity.setGkYPos(200);
+        eventList.add(entity);
 
-        for (int i = 0; i < 4; i++) {
-            ShootEntity entity = new ShootEntity();
-            entity.setLineXpos(4000+2000*i);
-            entity.setLineYpos(2000+300*i);
-            entity.setLineEventID(i+1);
-            entity.setTeamID(i+"");
-            pointEvent.add(entity);
-        }
+        ShootEntity entity1 = new ShootEntity();
+        entity1.setEventID(2);
+        entity1.setPlayID("0");
+        entity1.setEventName("抢断");
+        entity1.setTeamID("2");
+        entity1.setPlayerName1("李四");
+        entity1.setNumberBack1("8");
+        entity1.setBodyPartyName("脚背");
+        entity1.setDistanceName("10米");
+        entity1.setBallTypeName("滑铲");
+        entity1.setIsOK("0");
+        entity1.setBallXPos(800);
+        entity1.setBallYPos(300);
+        entity1.setFrameXPos(800);
+        entity1.setFrameYPos(300);
+        entity1.setGkXPos(800);
+        entity1.setGkYPos(300);
+        eventList.add(entity1);
+
+        ShootEntity entity2 = new ShootEntity();
+        entity2.setEventID(3);
+        entity2.setPlayID("1");
+        entity2.setEventName("射门");
+        entity2.setTeamID("1");
+        entity2.setPlayerName1("王五");
+        entity2.setNumberBack1("10");
+        entity2.setBodyPartyName("脚尖");
+        entity2.setDistanceName("20米");
+        entity2.setBallTypeName("抽射");
+        entity2.setIsOK("1");
+        entity2.setBallXPos(400);
+        entity2.setBallYPos(200);
+        entity2.setFrameXPos(400);
+        entity2.setFrameYPos(200);
+        entity2.setGkXPos(400);
+        entity2.setGkYPos(200);
+        eventList.add(entity2);
+
+        ShootEntity entitys1 = new ShootEntity();
+        entitys1.setLineXpos(4000);
+        entitys1.setLineYpos(2000);
+        entitys1.setLineEventID(1);
+        entitys1.setTeamID("1");
+        pointEvent.add(entitys1);
+
+        ShootEntity entitys2 = new ShootEntity();
+        entitys2.setLineXpos(7000);
+        entitys2.setLineYpos(2800);
+        entitys2.setLineEventID(2);
+        entitys2.setTeamID("2");
+        pointEvent.add(entitys2);
+
+        ShootEntity entitys3 = new ShootEntity();
+        entitys3.setLineXpos(10000);
+        entitys3.setLineYpos(3600);
+        entitys3.setLineEventID(3);
+        entitys3.setTeamID("1");
+        pointEvent.add(entitys3);
 
         footline.setData(pointEvent, MainActivity.this);
         transformfoot.setData(pointEvent,eventList, MainActivity.this);
