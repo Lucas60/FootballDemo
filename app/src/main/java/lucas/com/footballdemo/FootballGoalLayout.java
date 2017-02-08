@@ -50,7 +50,7 @@ public class FootballGoalLayout extends RelativeLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
-    
+
     private Paint paint = new Paint();
     private int width;
     private int height;
@@ -77,16 +77,14 @@ public class FootballGoalLayout extends RelativeLayout {
     private int finalWidth;
     private int finalHeight;
     private ImageView restart;
-    
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        
         paint.setColor(Color.WHITE);
-        
-        
     }
-    
+
+    //射门门框动画
     public void goal(ShootEntity entity,Activity activity){
         removeAllViews();
         this.activity = activity;
@@ -104,20 +102,17 @@ public class FootballGoalLayout extends RelativeLayout {
         proportionY = MyBigDecimal.div(244, 768);
         stateY = ((int)(params.height-MyBigDecimal.mul(params.height, proportionY))+1)/2;
         restart = (ImageView)activity.findViewById(R.id.restart);
-        
-//        if (entityText == null) {
-            ImageView ivBall = new ImageView(activity);
-            addView(ivBall,generateDefaultLayoutParams());
-            ImageView ivPlayer = new ImageView(activity);
-            addView(ivPlayer,generateDefaultLayoutParams());
-            ImageView ivGoal = new ImageView(activity);
-            addView(ivGoal,generateDefaultLayoutParams());
-//        } else {
-//        }
-//        entityText = entity;
+
+        ImageView ivBall = new ImageView(activity);
+        addView(ivBall,generateDefaultLayoutParams());
+        ImageView ivPlayer = new ImageView(activity);
+        addView(ivPlayer,generateDefaultLayoutParams());
+        ImageView ivGoal = new ImageView(activity);
+        addView(ivGoal,generateDefaultLayoutParams());
         setView();
     }
 
+    //设置控件
     private void setView() {
         ballXPos = entity.getBallXPos();
         ballYPos = entity.getBallYPos();
@@ -126,10 +121,13 @@ public class FootballGoalLayout extends RelativeLayout {
         gkXPos = entity.getGkXPos();
         gkYPos = entity.getGkYPos();
         isOK = entity.getIsOK();
-        
+
         ImageView ivBall = (ImageView)getChildAt(0);
         ivBall.clearAnimation();
-        
+
+
+        //补间动画
+
         ivBall.setBackgroundResource(R.mipmap.soccer_b03_hdpi);
         int leftB = width/2-ballWidth/2;
         int rightB = leftB+ballWidth;
@@ -141,19 +139,19 @@ public class FootballGoalLayout extends RelativeLayout {
         animationBall = new TranslateAnimation( 0,-(leftB-finalX),0,-(topB-finalY));
         animationBall.setDuration(1000);
         animationBall.setFillAfter(true);
-        
+
         ImageView ivPlayer = (ImageView)getChildAt(1);
         ivPlayer.clearAnimation();
-        
+
         finalPX = (int)MyBigDecimal.div(gkXPos,xy)+stateX-playerWidth/2;
         finalPY = (int)MyBigDecimal.div(gkYPos,xy)+stateY-playerWidth/2;
         finalWidth = (int)MyBigDecimal.div(gkXPos,xy)+stateX;
         finalHeight = (int)MyBigDecimal.div(gkYPos,xy)+stateY;
-        
-        
+
+
         leftP = width/2-playerWidth/2;
         topP = height/2+playerWidth/4;
-        
+
         int dWidth = (width-2*stateX);
         int dHeight = (height-2*stateY);
         if(finalWidth<=(dWidth/3+stateX) && finalHeight<(dHeight/2+stateY)){
@@ -186,7 +184,7 @@ public class FootballGoalLayout extends RelativeLayout {
         Animation animationPlayer = new TranslateAnimation( 0,-(leftP-finalPX),0,-(topP-finalPY));
         animationPlayer.setDuration(1000);
         animationPlayer.setFillAfter(true);
-        
+
         ImageView ivGoal = (ImageView)getChildAt(2);
         if(isOK.equals("1")){
             resG = R.mipmap.goal_l4;
@@ -195,7 +193,7 @@ public class FootballGoalLayout extends RelativeLayout {
         }
         ivGoal.setBackgroundResource(resG);
         ivGoal.clearAnimation();
-        
+
         int leftG = width/2-goalWidth/2;
         int rightG = leftG+goalWidth;
         int topG = height/2-goalWidth/4*3;
@@ -204,22 +202,23 @@ public class FootballGoalLayout extends RelativeLayout {
         ScaleAnimation animationGoal = new ScaleAnimation(0f,1.0f,0f,1.0f, Animation.RELATIVE_TO_SELF
                 ,0.5f, Animation.RELATIVE_TO_SELF,0.5f);
         animationGoal.setDuration(1000);
-        
+
         ivBall.startAnimation(animationBall);
         ivPlayer.startAnimation(animationPlayer);
         ivGoal.startAnimation(animationGoal);
         new Handler().postDelayed(new Runnable(){
 
-            public void run() {   
+            public void run() {
                 setMessage();
                 restart.setVisibility(View.VISIBLE);
-            }   
+            }
         }, 1000);
-        
-        
-        
+
+
+
     }
 
+    //设置控件信息
     private void setMessage() {
         ImageView netPlayer = new ImageView(activity);
         addView(netPlayer,generateDefaultLayoutParams());
@@ -233,7 +232,7 @@ public class FootballGoalLayout extends RelativeLayout {
         addView(tvDistance,generateDefaultLayoutParams());
         TextView tvType = new TextView(activity);
         addView(tvType,generateDefaultLayoutParams());
-        
+
         netPlayer.setBackgroundResource(R.mipmap.shoot_player);
         netPlayer.layout(width/4+60, height/3*2+15, width/4+180, height/3*2+175);
         tvPlayerName.layout(width/4+210, height/3*2, width/4+390, height/3*2+45);
