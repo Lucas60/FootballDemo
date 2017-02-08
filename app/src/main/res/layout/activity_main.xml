@@ -10,23 +10,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <lucas60.com.footballdemo.FootballLineLayout
+        <lucas.com.footballdemo.FootballLineLayout
             android:id="@+id/footline"
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_centerInParent="true"
             android:background="@mipmap/field01_s" >
-        </lucas60.com.footballdemo.FootballLineLayout>
+        </lucas.com.footballdemo.FootballLineLayout>
 
-        <lucas60.com.footballdemo.TransformballLayout
+        <lucas.com.footballdemo.TransformballLayout
             android:id="@+id/transformfoot"
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_centerInParent="true"
             android:background="@android:color/transparent" >
-        </lucas60.com.footballdemo.TransformballLayout>
+        </lucas.com.footballdemo.TransformballLayout>
 
-        <lucas60.com.footballdemo.FootballGoalLayout
+        <lucas.com.footballdemo.FootballGoalLayout
             android:id="@+id/footgoal"
             android:layout_width="500dp"
             android:layout_height="500dp"
@@ -34,7 +34,7 @@
             android:layout_centerHorizontal="true"
             android:visibility="gone"
             android:background="@mipmap/goal" >
-        </lucas60.com.footballdemo.FootballGoalLayout>
+        </lucas.com.footballdemo.FootballGoalLayout>
 
         <LinearLayout
             android:id="@+id/shoot_message"
